@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
+	<flow name="getFlights" doc:id="afd7365e-dca0-486d-a9b9-31613d51731c" >
+		<http:listener doc:name="Listener" doc:id="29ada99c-6684-4e85-8973-43ee665ee23b" config-ref="HTTP_Listener_config" path="${http.path}"/>
+		<http:request method="GET" doc:name="Request" doc:id="b660e9e0-6378-4bf6-ac12-053d79089d85" config-ref="HTTP_Request_configuration" path="${training.path}"/>
+		<ee:transform doc:name="Transform Message" doc:id="d2301f82-b82a-4b4d-bf78-6ca6e4b66d85" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+payload.flights map (object,index)->{
+			"Name": object.code,
+            "price__c": object.price,
+            "origin__c": object.origin,
+            "destination__c": object.destination,
+            //"departureDate__c":  object.departureDate  replace "/" with "-"  as String as Date  ,
+            "planeType__c": object.planeType,
+            "airlineName__c": object.airlineName,
+            "emptySeats__c": object.emptySeats
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="9aa3f058-c7ec-45f9-b725-3c37fd3d7221" message="#[payload]"/>
+		<flow-ref doc:name="Flow Reference" doc:id="cd4d2fc9-0643-49f1-a012-8b98ba7cd7e2" name="processRecords"/>
+		<ee:transform doc:name="Transform Message" doc:id="3f2d1968-bb1c-4b58-b210-5cd298f75d30" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="796771fb-e1bb-459f-b71a-db61a9a2f03b" message="#[payload]"/>
+	</flow>
+	<flow name="processRecords" doc:id="361e199f-3483-4c86-842d-bf662e3b7a90" >
+		<foreach doc:name="For Each" doc:id="70f37e11-8537-40e3-9665-860f719383c5" >
+			<ee:transform doc:name="Transform Message" doc:id="567b7b91-685b-416d-850a-c432c3662f9a" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+[payload]]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<salesforce:create type="flights__c" doc:name="Create" doc:id="68fe6980-6f94-49ea-b888-a5dd81a6479f" config-ref="Salesforce_Config"/>
+			<ee:transform doc:name="Transform Message" doc:id="e980b766-5589-4d71-8920-b15c5349781d" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<logger level="INFO" doc:name="Logger" doc:id="c511a239-29a0-4163-b32c-eda62ec59323" message="#[payload]"/>
+		</foreach>
+	</flow>
+</mule>
