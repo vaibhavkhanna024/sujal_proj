@@ -14,8 +14,8 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 		<http:request-connection host="${training.host}" port="${training.port}"/>
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="edc80381-38b9-4db5-b14a-049ccae4a78d" file="properties\secure\sample-${mule.env}-sfdc.properties" />
-	<global-property doc:name="Global Property" doc:id="3fd18f55-5696-4c06-93ec-254959139ee7" name="mule.env" value="dev" />
-	<global-property doc:name="Global Property" doc:id="7a25c916-0aed-4bfd-bfb4-b4bf4c671801" name="mule.key" value="sujal" />
+	<global-property doc:name="Global Property" doc:id="3fd18f55-5696-4c06-93ec-254959139ee7" name="mule.env" value="UAT" />
+	<global-property doc:name="Global Property" doc:id="7a25c916-0aed-4bfd-bfb4-b4bf4c671801" name="mule.key" value="anand" />
 	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="80e4e75e-f48e-44c6-8528-8ca324b11100" file="properties\secure\sample-${mule.env}-sfdc.properties" key="${mule.key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
