@@ -18,9 +18,8 @@ pipeline {
         }
         stage('Test Application By Hitting API') {
             steps {
-                bat 'cd "C:\\Users\\Sujal Anand\\AppData\\Roaming\\npm\\"'
-				bat 'newman run "C:\\Users\\Sujal Anand\\Desktop\\CI-CD-Newman\\CI-CD-GetFlights-Jenkins.postman_collection.json" --disable-unicode'
-            }
+                bat '"C:\\Users\\Sujal Anand\\AppData\\Roaming\\npm\\"newman run "C:\\Users\\Sujal Anand\\Desktop\\CI-CD-Newman\\CI-CD-GetFlights-Jenkins.postman_collection.json" --disable-unicode'
+                }
         }
     }
 }
