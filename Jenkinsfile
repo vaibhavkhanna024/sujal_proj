@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy Application') {
             steps {
-                bat 'mvn package deploy -DmuleDeploy -Danypoint.username=%USER_CREDENTIALS_USR% -Danypoint.password=%USER_CREDENTIALS_PSW% -Denv=dev -Dkey=%USER_KEY%
+                bat 'mvn package deploy -DmuleDeploy -Danypoint.username=%USER_CREDENTIALS_USR% -Danypoint.password=%USER_CREDENTIALS_PSW% -Denv=dev -Dkey=%USER_KEY%'
             }
         }
         stage('Test Application By Hitting API') {
