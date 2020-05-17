@@ -77,6 +77,10 @@
                 <format>html</format>
             </formats>
         </coverage>
+        <properties>
+				<mule.env>${env}</mule.env>
+				<mule.key>${key}</mule.key>
+			</properties>
     </configuration>
 </plugin>
         </plugins>
