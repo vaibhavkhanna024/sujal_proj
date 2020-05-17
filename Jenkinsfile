@@ -4,7 +4,6 @@ pipeline {
         USER_CREDENTIALS = credentials('AnypointExchangeID')
         USER_KEY = credentials('key')
     }
-
     stages {
     	stage('Build Application') {
             steps {
