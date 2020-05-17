@@ -64,6 +64,12 @@
     </executions>
 
     <configuration>
+    <cloudHubDeployment>
+    <properties>
+				<mule.env>${env}</mule.env>
+				<mule.key>${key}</mule.key>
+			</properties>
+    </cloudHubDeployment>
         <coverage>
             <runCoverage>true</runCoverage>
             <failBuild>true</failBuild>
@@ -77,10 +83,7 @@
                 <format>html</format>
             </formats>
         </coverage>
-        <properties>
-				<mule.env>${env}</mule.env>
-				<mule.key>${key}</mule.key>
-			</properties>
+        
     </configuration>
 </plugin>
         </plugins>
