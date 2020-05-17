@@ -69,8 +69,8 @@
             <failBuild>true</failBuild>
 
             <requiredApplicationCoverage>100</requiredApplicationCoverage>
-            <requiredResourceCoverage>100</requiredResourceCoverage>
-            <requiredFlowCoverage>100</requiredFlowCoverage>
+            <requiredResourceCoverage>50</requiredResourceCoverage>
+            <requiredFlowCoverage>50</requiredFlowCoverage>
 
             <formats>
                 <format>console</format>
