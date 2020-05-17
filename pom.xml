@@ -64,12 +64,11 @@
     </executions>
 
     <configuration>
-    <cloudHubDeployment>
-    <properties>
+    <environmentVariables>
 				<mule.env>${env}</mule.env>
 				<mule.key>${key}</mule.key>
-			</properties>
-    </cloudHubDeployment>
+			</environmentVariables>
+ 
         <coverage>
             <runCoverage>true</runCoverage>
             <failBuild>true</failBuild>
