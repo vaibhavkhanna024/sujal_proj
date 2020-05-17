@@ -5,7 +5,7 @@
 
 It is a simple Project Of Getting Flights Data and inerting into salesforce Flights Custom object.It contains a simple Munit suite too.
 I have created this project to Build CI/CD Pipeline using Jenkins. There is a Jenkins File Attached into the project.
-Which is used to build the CI/CD Pipeline.
+Which is used to build the CI/CD Pipeline. This Project is based on mule 4.3.0
 
 # Features Of The CI/CD
 
