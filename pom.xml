@@ -19,11 +19,13 @@
     </properties>
 	<build>
 		<plugins>
+		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
@@ -46,6 +48,7 @@
 			</cloudHubDeployment>
 				</configuration>
 			</plugin>
+			
 		<plugin>
     <groupId>com.mulesoft.munit.tools</groupId>
     <artifactId>munit-maven-plugin</artifactId>
