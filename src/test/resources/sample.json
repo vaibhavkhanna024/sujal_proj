@@ -9,6 +9,16 @@
             "airlineName": "United",
             "planeType": "Boeing 737",
             "emptySeats": 0
+        },
+		{
+            "code": "ER38sd",
+            "price": 400,
+            "origin": "MUA",
+            "destination": "SFO",
+            "departureDate": "2015/03/20",
+            "airlineName": "United",
+            "planeType": "Boeing 737",
+            "emptySeats": 0
         }
     ]
 }
