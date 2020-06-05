@@ -32,7 +32,7 @@
 			<environment>Sandbox</environment>
 			<workers>1</workers>
 			<workerType>Micro</workerType>
-			<applicationName>CI-CD-GetAndInsertFlights-1996</applicationName>
+			<applicationName>CI-CD-GetAndInsertFlights-05062020</applicationName>
 			<password>${anypoint.password}</password>
 			<muleVersion>4.3.0</muleVersion>
 			<objectStoreV2>true</objectStoreV2>
